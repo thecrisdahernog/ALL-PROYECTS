@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub - Juegos Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F5F5F5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .menu-buttons, .levels-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .menu-buttons {
+            grid-template-columns: 1fr;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFFFFF;
+            color: #333333;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .game-btn {
+            padding: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #E0E0E0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .back-btn {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+            background-color: #F5F5F5;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .levels-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        #snakeCanvas {
+            border: 2px solid #333333;
+            background-color: #000000;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .game-info {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.1em;
+            color: #333333;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .options button {
+            padding: 15px;
+        }
+
+        .word-display {
+            font-family: 'Courier New', monospace;
+            font-size: 2em;
+            text-align: center;
+            margin: 30px 0;
+            letter-spacing: 10px;
+            color: #333333;
+        }
+
+        .hint-text {
+            text-align: center;
+            font-size: 1.1em;
+            color: #666666;
+            margin: 15px 0;
+        }
+
+        .tries-text {
+            text-align: center;
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        .score-text {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #333333;
+        }
+
+        .rps-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .rps-btn {
+            padding: 20px 30px;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            input {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- MENÚ PRINCIPAL -->
+        <div id="mainMenu" class="section active">
+            <h1>🎮 GAME HUB</h1>
+            <div class="menu-buttons">
+                <button class="game-btn" onclick="showSection('snakeMenu')">🐍 SNAKE</button>
+                <button class="game-btn" onclick="showSection('hangmanMenu')">🎭 AHORCADO</button>
+                <button class="game-btn" onclick="showSection('guessMenu')">🎯 ADIVINANZA</button>
+                <button class="game-btn" onclick="showSection('rpsMenu')">✌️ PIEDRA, PAPEL, TIJERA</button>
+            </div>
+        </div>
+
+        <!-- SELECTOR DE NIVELES SNAKE -->
+        <div id="snakeMenu" class="section">
+            <h2>🐍 SNAKE - SELECCIONAR NIVEL</h2>
+            <div class="levels-grid" id="snakeLevels"></div>
+            <button class="back-btn" onclick="showSection('mainMenu')">← Volver</button>
+        </div>
+
+        <!-- JUEGO SNAKE -->
+        <div id="snakeGame" class="section">
+            <h2>NIVEL <span id="snakeLevel">1</span> - SNAKE 🐍</h2>
+            <div class="game-info">
+                <div>Puntuación: <strong id="snakeScore">0</strong> | Meta: <strong id="snakeMeta">4</strong></div>
+            </div>
+            <canvas id="snakeCanvas" width="400" height="400" tabindex="1"></canvas>
+            <div class="hint-text">Usa las flechas del teclado para moverte</div>
+            <button onclick="goBackSnake()" class="back-btn">← Volver</button>
+        </div>
+
+        <!-- SELECTOR DE NIVELES AHORCADO -->
+        <div id="hangmanMenu" class="section">
+            <h2>🎭 AHORCADO - SELECCIONAR NIVEL</h2>
+            <div class="levels-grid" id="hangmanLevels"></div>
+            <button class="back-btn" onclick="showSection('mainMenu')">← Volver</button>
+        </div>
+
+        <!-- JUEGO AHORCADO -->
+        <div id="hangmanGame" class="section">
+            <h2>NIVEL <span id="hangmanLevel">1</span> - AHORCADO 🎭</h2>
+            <div class="word-display" id="hangmanWord"></div>
+            <div class="tries-text">Intentos restantes: <strong id="hangmanTries">6</strong></div>
+            <div class="input-group">
+                <input type="text" id="hangmanInput" maxlength="1" placeholder="Letra">
+                <button onclick="playHangman()">Intentar</button>
+            </div>
+            <button onclick="goBackHangman()" class="back-btn">← Volver</button>
+        </div>
+
+        <!-- SELECTOR DE NIVELES ADIVINANZA -->
+        <div id="guessMenu" class="section">
+            <h2>🎯 ADIVINANZA - SELECCIONAR NIVEL</h2>
+            <div class="levels-grid" id="guessLevels"></div>
+            <button class="back-btn" onclick="showSection('mainMenu')">← Volver</button>
+        </div>
+
+        <!-- JUEGO ADIVINANZA -->
+        <div id="guessGame" class="section">
+            <h2>NIVEL <span id="guessLevel">1</span> - ADIVINANZA 🎯</h2>
+            <div class="game-info">
+                <div id="guessRange"></div>
+            </div>
+            <div class="input-group">
+                <input type="number" id="guessInput" placeholder="Tu número">
+                <button onclick="playGuess()">Probar</button>
+            </div>
+            <div class="hint-text" id="guessHint"></div>
+            <button onclick="goBackGuess()" class="back-btn">← Volver</button>
+        </div>
+
+        <!-- SELECTOR DE NIVELES RPS -->
+        <div id="rpsMenu" class="section">
+            <h2>✌️ PIEDRA, PAPEL, TIJERA - SELECCIONAR NIVEL</h2>
+            <div class="levels-grid" id="rpsLevels"></div>
+            <button class="back-btn" onclick="showSection('mainMenu')">← Volver</button>
+        </div>
+
+        <!-- JUEGO RPS -->
+        <div id="rpsGame" class="section">
+            <h2>NIVEL <span id="rpsLevel">1</span> - PIEDRA, PAPEL, TIJERA ✌️</h2>
+            <div class="game-info">
+                <div id="rpsInfo"></div>
+            </div>
+            <div class="score-text">Victorias: <strong id="rpsScore">0</strong></div>
+            <div class="rps-options">
+                <button class="rps-btn" onclick="playRPS('Piedra')">🪨 Piedra</button>
+                <button class="rps-btn" onclick="playRPS('Papel')">📄 Papel</button>
+                <button class="rps-btn" onclick="playRPS('Tijera')">✂️ Tijera</button>
+            </div>
+            <div class="hint-text" id="rpsResult"></div>
+            <button onclick="goBackRPS()" class="back-btn">← Volver</button>
+        </div>
+    </div>
+
+    <script>
+        // VARIABLES GLOBALES
+        let gameState = {
+            snake: {
+                level: 1,
+                snake: [[100, 100], [100, 120]],
+                direction: 'Up',
+                nextDirection: 'Up',
+                food: null,
+                score: 0,
+                gameOver: false,
+                gameLoopId: null,
+                canvas: null,
+                ctx: null
+            },
+            hangman: {
+                level: 1,
+                words: ['SOL', 'CASA', 'PYTHON', 'TECLADO', 'SISTEMA', 'INTERFAZ', 'ALGORITMO', 'ESCALABILIDAD', 'ABSTRACCION', 'MICROPROCESADOR'],
+                word: '',
+                guesses: [],
+                tries: 6
+            },
+            guess: {
+                level: 1,
+                limit: 10,
+                secret: 0,
+                attempts: 0
+            },
+            rps: {
+                level: 1,
+                winsNeeded: 1,
+                currentWins: 0
+            }
+        };
+
+        // FUNCIONES GENERALES
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function generateLevels(gameType) {
+            const container = document.getElementById(`${gameType}Levels`);
+            container.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = `Nivel ${i}`;
+                btn.onclick = () => startGame(gameType, i);
+                container.appendChild(btn);
+            }
+        }
+
+        function startGame(gameType, level) {
+            if (gameType === 'snake') startSnakeGame(level);
+            else if (gameType === 'hangman') startHangmanGame(level);
+            else if (gameType === 'guess') startGuessGame(level);
+            else if (gameType === 'rps') startRPSGame(level);
+        }
+
+        // ===== SNAKE =====
+        function startSnakeGame(level) {
+            gameState.snake.level = level;
+            gameState.snake.score = 0;
+            gameState.snake.gameOver = false;
+            gameState.snake.direction = 'Up';
+            gameState.snake.nextDirection = 'Up';
+            gameState.snake.snake = [[100, 100], [100, 120]];
+            gameState.snake.food = [Math.floor(Math.random() * 20) * 20, Math.floor(Math.random() * 20) * 20];
+            gameState.snake.canvas = document.getElementById('snakeCanvas');
+            gameState.snake.ctx = gameState.snake.canvas.getContext('2d');
+            
+            document.getElementById('snakeLevel').textContent = level;
+            document.getElementById('snakeMeta').textContent = 3 + level;
+            document.getElementById('snakeScore').textContent = '0';
+            
+            showSection('snakeGame');
+            gameState.snake.canvas.focus();
+            
+            setupSnakeControls();
+            runSnake();
+        }
+
+        function setupSnakeControls() {
+            const handleKeyDown = (e) => {
+                const opposites = {'Up': 'Down', 'Down': 'Up', 'Left': 'Right', 'Right': 'Left'};
+                const keyMap = {'ArrowUp': 'Up', 'ArrowDown': 'Down', 'ArrowLeft': 'Left', 'ArrowRight': 'Right'};
+                if (e.key in keyMap) {
+                    const dir = keyMap[e.key];
+                    if (dir !== opposites[gameState.snake.direction]) {
+                        gameState.snake.nextDirection = dir;
+                    }
+                    e.preventDefault();
+                }
+            };
+            
+            document.removeEventListener('keydown', handleKeyDown);
+            document.addEventListener('keydown', handleKeyDown);
+        }
+
+        function runSnake() {
+            if (gameState.snake.gameOver) return;
+
+            const s = gameState.snake;
+            s.direction = s.nextDirection;
+
+            const head = s.snake[s.snake.length - 1];
+            let newHead = [...head];
+
+            if (s.direction === 'Up') newHead[1] -= 20;
+            else if (s.direction === 'Down') newHead[1] += 20;
+            else if (s.direction === 'Left') newHead[0] -= 20;
+            else if (s.direction === 'Right') newHead[0] += 20;
+
+            // Colisiones
+            if (newHead[0] < 0 || newHead[0] >= 400 || newHead[1] < 0 || newHead[1] >= 400 || 
+                s.snake.some(seg => seg[0] === newHead[0] && seg[1] === newHead[1])) {
+                s.gameOver = true;
+                alert(`¡Colisión! Puntuación: ${s.score}\nMeta era: ${3 + s.level}`);
+                goBackSnake();
+                return;
+            }
+
+            s.snake.push(newHead);
+
+            // Comió comida
+            if (newHead[0] === s.food[0] && newHead[1] === s.food[1]) {
+                s.score++;
+                document.getElementById('snakeScore').textContent = s.score;
+                s.food = [Math.floor(Math.random() * 20) * 20, Math.floor(Math.random() * 20) * 20];
+
+                if (s.score >= 3 + s.level) {
+                    s.gameOver = true;
+                    alert(`¡Nivel ${s.level} Superado!`);
+                    goBackSnake();
+                    return;
+                }
+            } else {
+                s.snake.shift();
+            }
+
+            // Dibujar
+            s.ctx.fillStyle = '#000000';
+            s.ctx.fillRect(0, 0, 400, 400);
+
+            s.ctx.fillStyle = '#FF0000';
+            s.ctx.fillRect(s.food[0], s.food[1], 20, 20);
+
+            s.ctx.fillStyle = '#9E9E9E';
+            s.snake.forEach(seg => {
+                s.ctx.fillRect(seg[0], seg[1], 20, 20);
+            });
+
+            const speed = Math.max(150 - (s.level * 12), 40);
+            s.gameLoopId = setTimeout(runSnake, speed);
+        }
+
+        function goBackSnake() {
+            gameState.snake.gameOver = true;
+            if (gameState.snake.gameLoopId) clearTimeout(gameState.snake.gameLoopId);
+            document.removeEventListener('keydown', null);
+            showSection('snakeMenu');
+        }
+
+        // ===== AHORCADO =====
+        function startHangmanGame(level) {
+            gameState.hangman.level = level;
+            gameState.hangman.word = gameState.hangman.words[level - 1];
+            gameState.hangman.guesses = [];
+            gameState.hangman.tries = 6;
+
+            document.getElementById('hangmanLevel').textContent = level;
+            document.getElementById('hangmanInput').value = '';
+            updateHangmanDisplay();
+            showSection('hangmanGame');
+            document.getElementById('hangmanInput').focus();
+        }
+
+        function updateHangmanDisplay() {
+            const h = gameState.hangman;
+            const display = h.word.split('').map(c => h.guesses.includes(c) ? c : '_').join(' ');
+            document.getElementById('hangmanWord').textContent = display;
+            document.getElementById('hangmanTries').textContent = h.tries;
+        }
+
+        function playHangman() {
+            const char = document.getElementById('hangmanInput').value.toUpperCase();
+            document.getElementById('hangmanInput').value = '';
+
+            if (!char || gameState.hangman.guesses.includes(char)) return;
+
+            gameState.hangman.guesses.push(char);
+            if (!gameState.hangman.word.includes(char)) {
+                gameState.hangman.tries--;
+            }
+
+            updateHangmanDisplay();
+
+            const display = gameState.hangman.word.split('').map(c => gameState.hangman.guesses.includes(c) ? c : '_').join('');
+            if (!display.includes('_')) {
+                alert('¡Victoria! ¡Nivel Completado!');
+                goBackHangman();
+            } else if (gameState.hangman.tries <= 0) {
+                alert(`Game Over! La palabra era: ${gameState.hangman.word}`);
+                goBackHangman();
+            }
+        }
+
+        function goBackHangman() {
+            showSection('hangmanMenu');
+        }
+
+        // ===== ADIVINANZA =====
+        function startGuessGame(level) {
+            gameState.guess.level = level;
+            gameState.guess.limit = level * 10;
+            gameState.guess.secret = Math.floor(Math.random() * gameState.guess.limit) + 1;
+            gameState.guess.attempts = 0;
+
+            document.getElementById('guessLevel').textContent = level;
+            document.getElementById('guessRange').textContent = `Adivina el número entre 1 y ${gameState.guess.limit}`;
+            document.getElementById('guessInput').value = '';
+            document.getElementById('guessHint').textContent = '';
+            showSection('guessGame');
+            document.getElementById('guessInput').focus();
+        }
+
+        function playGuess() {
+            const value = parseInt(document.getElementById('guessInput').value);
+            if (isNaN(value)) return;
+
+            gameState.guess.attempts++;
+            document.getElementById('guessInput').value = '';
+
+            if (value === gameState.guess.secret) {
+                alert(`¡Ganaste! Lo adivinaste en ${gameState.guess.attempts} intentos. ¡Nivel ${gameState.guess.level} superado!`);
+                goBackGuess();
+            } else {
+                const hint = value < gameState.guess.secret ? '⬆️ Más alto' : '⬇️ Más bajo';
+                document.getElementById('guessHint').textContent = hint;
+            }
+        }
+
+        function goBackGuess() {
+            showSection('guessMenu');
+        }
+
+        // ===== PIEDRA PAPEL TIJERA =====
+        function startRPSGame(level) {
+            gameState.rps.level = level;
+            gameState.rps.winsNeeded = 1 + Math.floor(level / 3);
+            gameState.rps.currentWins = 0;
+
+            document.getElementById('rpsLevel').textContent = level;
+            document.getElementById('rpsInfo').textContent = `Gana ${gameState.rps.winsNeeded} veces para pasar`;
+            document.getElementById('rpsScore').textContent = '0';
+            document.getElementById('rpsResult').textContent = '';
+            showSection('rpsGame');
+        }
+
+        function playRPS(user) {
+            const options = ['Piedra', 'Papel', 'Tijera'];
+            const cpu = options[Math.floor(Math.random() * 3)];
+
+            let result = '';
+            if ((user === 'Piedra' && cpu === 'Tijera') || 
+                (user === 'Papel' && cpu === 'Piedra') || 
+                (user === 'Tijera' && cpu === 'Papel')) {
+                gameState.rps.currentWins++;
+                result = '¡Ganaste esta ronda!';
+            } else if (user === cpu) {
+                result = 'Empate';
+            } else {
+                gameState.rps.currentWins = 0;
+                result = 'Perdiste. Racha reiniciada.';
+            }
+
+            document.getElementById('rpsScore').textContent = gameState.rps.currentWins;
+            document.getElementById('rpsResult').textContent = `CPU eligió: ${cpu} - ${result}`;
+
+            if (gameState.rps.currentWins >= gameState.rps.winsNeeded) {
+                alert(`¡Nivel ${gameState.rps.level} Superado!`);
+                goBackRPS();
+            }
+        }
+
+        function goBackRPS() {
+            showSection('rpsMenu');
+        }
+
+        // INICIALIZACIÓN
+        window.addEventListener('load', () => {
+            generateLevels('snake');
+            generateLevels('hangman');
+            generateLevels('guess');
+            generateLevels('rps');
+        });
+    </script>
+</body>
+</html>
