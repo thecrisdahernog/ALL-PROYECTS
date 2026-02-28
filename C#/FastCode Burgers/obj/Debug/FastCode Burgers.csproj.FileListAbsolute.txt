@@ -1,0 +1,7 @@
+C:\Users\Dell\Desktop\proyectos\consolas\FastCode Burgers\bin\Debug\FastCode Burgers.exe.config
+C:\Users\Dell\Desktop\proyectos\consolas\FastCode Burgers\bin\Debug\FastCode Burgers.exe
+C:\Users\Dell\Desktop\proyectos\consolas\FastCode Burgers\bin\Debug\FastCode Burgers.pdb
+C:\Users\Dell\Desktop\proyectos\consolas\FastCode Burgers\obj\Debug\FastCode Burgers.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\proyectos\consolas\FastCode Burgers\obj\Debug\FastCode Burgers.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\proyectos\consolas\FastCode Burgers\obj\Debug\FastCode Burgers.exe
+C:\Users\Dell\Desktop\proyectos\consolas\FastCode Burgers\obj\Debug\FastCode Burgers.pdb

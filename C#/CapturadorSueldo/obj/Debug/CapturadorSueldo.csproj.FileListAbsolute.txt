@@ -1,0 +1,7 @@
+C:\Users\Dell\Desktop\proyectos\consolas\CapturadorSueldo\bin\Debug\CapturadorSueldo.exe.config
+C:\Users\Dell\Desktop\proyectos\consolas\CapturadorSueldo\bin\Debug\CapturadorSueldo.exe
+C:\Users\Dell\Desktop\proyectos\consolas\CapturadorSueldo\bin\Debug\CapturadorSueldo.pdb
+C:\Users\Dell\Desktop\proyectos\consolas\CapturadorSueldo\obj\Debug\CapturadorSueldo.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\proyectos\consolas\CapturadorSueldo\obj\Debug\CapturadorSueldo.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\proyectos\consolas\CapturadorSueldo\obj\Debug\CapturadorSueldo.exe
+C:\Users\Dell\Desktop\proyectos\consolas\CapturadorSueldo\obj\Debug\CapturadorSueldo.pdb

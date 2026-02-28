@@ -1,0 +1,14 @@
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\bin\Debug\net8.0\primerospasos.exe
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\bin\Debug\net8.0\primerospasos.deps.json
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\bin\Debug\net8.0\primerospasos.runtimeconfig.json
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\bin\Debug\net8.0\primerospasos.dll
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\bin\Debug\net8.0\primerospasos.pdb
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\obj\Debug\net8.0\primerospasos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\obj\Debug\net8.0\primerospasos.AssemblyInfoInputs.cache
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\obj\Debug\net8.0\primerospasos.AssemblyInfo.cs
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\obj\Debug\net8.0\primerospasos.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\obj\Debug\net8.0\primerospasos.dll
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\obj\Debug\net8.0\refint\primerospasos.dll
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\obj\Debug\net8.0\primerospasos.pdb
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\obj\Debug\net8.0\primerospasos.genruntimeconfig.cache
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos\obj\Debug\net8.0\ref\primerospasos.dll

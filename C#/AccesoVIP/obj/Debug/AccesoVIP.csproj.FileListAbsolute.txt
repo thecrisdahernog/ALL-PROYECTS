@@ -1,0 +1,7 @@
+C:\Users\Dell\Desktop\proyectos\consolas\AccesoVIP\bin\Debug\AccesoVIP.exe.config
+C:\Users\Dell\Desktop\proyectos\consolas\AccesoVIP\bin\Debug\AccesoVIP.exe
+C:\Users\Dell\Desktop\proyectos\consolas\AccesoVIP\bin\Debug\AccesoVIP.pdb
+C:\Users\Dell\Desktop\proyectos\consolas\AccesoVIP\obj\Debug\AccesoVIP.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\proyectos\consolas\AccesoVIP\obj\Debug\AccesoVIP.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\proyectos\consolas\AccesoVIP\obj\Debug\AccesoVIP.exe
+C:\Users\Dell\Desktop\proyectos\consolas\AccesoVIP\obj\Debug\AccesoVIP.pdb

@@ -1,0 +1,7 @@
+C:\Users\Dell\Desktop\proyectos\consolas\Ciclos\bin\Debug\Ciclos.exe.config
+C:\Users\Dell\Desktop\proyectos\consolas\Ciclos\bin\Debug\Ciclos.exe
+C:\Users\Dell\Desktop\proyectos\consolas\Ciclos\bin\Debug\Ciclos.pdb
+C:\Users\Dell\Desktop\proyectos\consolas\Ciclos\obj\Debug\Ciclos.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\proyectos\consolas\Ciclos\obj\Debug\Ciclos.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\proyectos\consolas\Ciclos\obj\Debug\Ciclos.exe
+C:\Users\Dell\Desktop\proyectos\consolas\Ciclos\obj\Debug\Ciclos.pdb

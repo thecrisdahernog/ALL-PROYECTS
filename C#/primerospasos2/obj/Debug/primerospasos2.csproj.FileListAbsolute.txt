@@ -1,0 +1,7 @@
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos2\obj\Debug\primerospasos2.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos2\obj\Debug\primerospasos2.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos2\bin\Debug\primerospasos2.exe.config
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos2\bin\Debug\primerospasos2.exe
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos2\bin\Debug\primerospasos2.pdb
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos2\obj\Debug\primerospasos2.exe
+C:\Users\Dell\Desktop\proyectos\consolas\primerospasos2\obj\Debug\primerospasos2.pdb

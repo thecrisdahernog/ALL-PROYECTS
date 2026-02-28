@@ -1,0 +1,7 @@
+C:\Users\Dell\Desktop\proyectos\consolas\pokemon\bin\Debug\pokemon.exe.config
+C:\Users\Dell\Desktop\proyectos\consolas\pokemon\bin\Debug\pokemon.exe
+C:\Users\Dell\Desktop\proyectos\consolas\pokemon\bin\Debug\pokemon.pdb
+C:\Users\Dell\Desktop\proyectos\consolas\pokemon\obj\Debug\pokemon.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\proyectos\consolas\pokemon\obj\Debug\pokemon.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\proyectos\consolas\pokemon\obj\Debug\pokemon.exe
+C:\Users\Dell\Desktop\proyectos\consolas\pokemon\obj\Debug\pokemon.pdb

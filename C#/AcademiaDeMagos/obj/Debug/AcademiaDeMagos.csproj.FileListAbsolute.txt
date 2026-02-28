@@ -1,0 +1,7 @@
+C:\Users\Dell\Desktop\proyectos\consolas\AcademiaDeMagos\bin\Debug\AcademiaDeMagos.exe.config
+C:\Users\Dell\Desktop\proyectos\consolas\AcademiaDeMagos\bin\Debug\AcademiaDeMagos.exe
+C:\Users\Dell\Desktop\proyectos\consolas\AcademiaDeMagos\bin\Debug\AcademiaDeMagos.pdb
+C:\Users\Dell\Desktop\proyectos\consolas\AcademiaDeMagos\obj\Debug\AcademiaDeMagos.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\proyectos\consolas\AcademiaDeMagos\obj\Debug\AcademiaDeMagos.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\proyectos\consolas\AcademiaDeMagos\obj\Debug\AcademiaDeMagos.exe
+C:\Users\Dell\Desktop\proyectos\consolas\AcademiaDeMagos\obj\Debug\AcademiaDeMagos.pdb
