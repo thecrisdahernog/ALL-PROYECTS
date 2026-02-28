@@ -1,0 +1,15 @@
+.Contenedor-horizontal{
+    height: 180px;
+    width: 40%;
+    border: solid black 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+
+.otro-Contenedor {
+    background-color: aqua;
+    height: ;
+}

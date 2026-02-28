@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 4fr 1fr;
+    gap: 5px;
+}
+
+header{
+    grid-column: span 2;
+}
+
+footer{
+    grid-column: span 2;
+}
+aside{
+    grid-column: span 1;
+    background-image: url(montañas.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+section{
+    grid-column: span 1;
+    background-image: url(basilica.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+.centrar{
+    background-color: #7E48DB;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+}
+
+.imagen{
+    height: 95%;
+    width: 95%;
+    
+}

@@ -1,0 +1,133 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    display:grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;;
+    gap: 5px;    
+}
+
+.centrar{
+    background-color: #7E48db;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+}
+
+.primero{
+    background-color: #7E48db;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-image: url(cuadro1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.segundo{
+    background-color: #7E48db;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-image: url(rectangulo1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.tercero{
+    background-color: #7E48db;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-image: url(cuadro2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.cuarto{
+    background-color: #7E48db;
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-image: url(vertical1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.quinto{
+    background-color: #7E48db;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    background-image: url(vertical2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.sexto{
+    background-color: #7E48db;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    background-image: url(rectangulo2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.septimo{
+    background-color: #7E48db;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    background-image: url(cuadro3.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.octavo{
+    background-color: #7E48db;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    background-image: url(cuadro4.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.noveno{
+    background-color: #7E48db;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    background-image: url(vertical3.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.decimo{
+    background-color: #7E48db;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    background-image: url(cuadro5.jpg);
+    background-size: cover;
+    background-position: center;
+}

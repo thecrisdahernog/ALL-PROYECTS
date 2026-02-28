@@ -1,0 +1,33 @@
+.Cuadro-logo{
+    height: 80px;
+    width: 100%;
+    background-color: darkgrey;
+}
+
+.Buttons{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.cr7-img{
+    height: 500Px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;    
+}
+.cajaimagenes{
+    height: 300px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+.imagen{
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+}

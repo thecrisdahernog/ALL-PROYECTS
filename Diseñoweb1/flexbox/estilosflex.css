@@ -1,0 +1,48 @@
+.contenedor-horizontal{
+    height: 190px;
+    width: 40%;
+    border: solid black 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.contenedor-vertical{
+    height: 600px;
+    width: 100px;
+    border: solid black 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.otro-contenedor{
+    background-color: aqua;
+    height: 500px;
+    width: 700px;
+    border: solid black 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    gap: 2rem;
+}
+
+.cuadro{
+    background-color: blue;
+    color: white;
+    border: solid red 1px;
+    height: 80px;
+    /* width: 80px; */
+    font-size: 2rem;
+    flex-grow: 1;
+}
+
+.cuadro-doble{
+    flex-grow: 2;
+}
+
+.cuadro-triple{
+    flex-grow: 3;
+}
