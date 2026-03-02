@@ -131,3 +131,36 @@ body{
     background-size: cover;
     background-position: center;
 }
+
+.onceavo{
+    background-color: #7E48db;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-image: url(cuadro6.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.doceavo{
+    background-color: #7E48db;
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-image: url(cuadro7.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.treceavo{
+    background-color: #7E48db;
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    background-image: url(cuadro8.jpg);
+    background-size: cover;
+    background-position: center;
+}
