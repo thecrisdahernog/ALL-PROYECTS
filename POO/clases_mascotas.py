@@ -38,19 +38,26 @@ class Mascota:
         print("2. Jugar")
         print("3. Dormir")
         print("4. Ver información")
-        if self.opciones == "1":
+        opcion = input("Cual es tu eleccion: ")
+        if opcion == "1":
             self.comer()
             self.info()
-        elif self.opciones == "2":
+            self.opciones()
+        elif opcion == "2":
             self.jugar()
             self.info()
-        elif self.opciones == "3":
+            self.opciones()
+        elif opcion == "3":
             self.dormir()
             self.info()
-        elif self.opciones == "4":
+            self.opciones()
+        elif opcion == "4":
             self.info()
+            self.opciones()
         else:
             print("Opción no válida. Por favor, selecciona una opción del 1 al 4.")
         
         
 Mascota1 = Mascota("Buddy")
+Mascota1.info()
+Mascota1.opciones()
