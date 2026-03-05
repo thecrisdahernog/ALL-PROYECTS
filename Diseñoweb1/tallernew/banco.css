@@ -1,0 +1,141 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.menu{
+    height: 90px;
+    width: 95%;
+    background-color: blue;
+    color: white;
+    margin: 10px auto;
+    border-radius: 20px;
+
+    display: flex;
+}
+
+body{
+    background-color: lightgray;
+}
+
+.open-sans {
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;  
+}
+
+.logo{
+width: 20%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.navegacion{
+width: 80%;
+display: flex;
+justify-content: center;
+align-items: center;
+list-style: none;
+gap: 1rem;
+}
+
+.item-menu{
+    width: 20%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid white;
+    gap: 1rem;
+    border-radius: 1rem;
+}
+
+.item-menu:hover{
+    cursor: pointer;
+    background-color: white;
+    color:blue
+}
+
+.test{
+    border: solid red 1px;
+}
+
+.banner{
+    height: 430px;
+    width: 95%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    grid-template-rows: 50% 50%;
+    gap: 10px;
+    background-color: white;
+}
+
+.imagen-ppal{
+    grid-row: span 2;
+    width: 100%;
+    height: calc(100% - 10px);
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+.imagen-second{
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cartas{
+    height: 300px;
+    width: 95%;
+    margin: 1rem auto;
+    display: flex;
+    gap: 16px;
+}
+
+.card{
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+}
+
+.image-card{
+    width: 100%;
+    height: 70%;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+}
+
+.detalles{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #85C8F5;;
+    color: white;
+
+}
+
+.ver-mas{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #070E46;
+    color: white;
+}
+
+.ver-mas:hover{
+    cursor: pointer;
+    background-color: white;
+    color: #070E46;
+}
+#070E46;
+#85C8F5;
