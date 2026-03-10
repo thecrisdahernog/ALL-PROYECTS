@@ -53,6 +53,33 @@
         <p>Haz clic en los trastes para tocar notas individuales o desliza sobre las cuerdas a la izquierda.</p>
     </div>
 </section>
+    <section class="chord-selector">
+    <h3>Guía de Acordes Académica</h3>
+    <div class="chord-group">
+        <h4>Mayores</h4>
+        <div class="chord-buttons">
+            <button onclick="showChord('C')">C (Do)</button>
+            <button onclick="showChord('D')">D (Re)</button>
+            <button onclick="showChord('E')">E (Mi)</button>
+            <button onclick="showChord('F')">F (Fa)</button>
+            <button onclick="showChord('G')">G (Sol)</button>
+            <button onclick="showChord('A')">A (La)</button>
+            <button onclick="showChord('B')">B (Si)</button>
+        </div>
+    </div>
+    <div class="chord-group">
+        <h4>Menores</h4>
+        <div class="chord-buttons">
+            <button onclick="showChord('Cm')">Cm</button>
+            <button onclick="showChord('Dm')">Dm</button>
+            <button onclick="showChord('Em')">Em</button>
+            <button onclick="showChord('Fm')">Fm</button>
+            <button onclick="showChord('Am')">Am</button>
+            <button onclick="showChord('Bm')">Bm</button>
+        </div>
+    </div>
+    <button onclick="clearHighlights()" class="btn-clear" style="margin-top: 15px;">Limpiar Guía</button>
+</section>
     </main>
 
     <script src="script.js"></script>

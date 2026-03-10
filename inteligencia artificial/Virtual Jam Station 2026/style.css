@@ -191,3 +191,58 @@ header { text-align: center; margin: 2rem 0; }
     background: var(--accent-color);
     box-shadow: 0 0 15px var(--accent-color);
 }
+
+.chord-selector {
+    margin-top: 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+}
+
+.chord-buttons button {
+    padding: 8px 15px;
+    margin: 5px;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.chord-buttons button:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.btn-clear {
+    border-color: #ff4757 !important;
+    color: #ff4757 !important;
+}
+
+/* Clase de iluminación para Piano y Guitarra */
+.highlight {
+    background: #2ecc71 !important; /* Verde brillante para aprendizaje */
+    box-shadow: 0 0 20px #2ecc71;
+    border-color: #fff !important;
+}
+
+/* Ajuste de grosor de cuerdas para realismo */
+.string[data-string="1"] { height: 6px; } /* Mi Grave */
+.string[data-string="2"] { height: 5px; }
+.string[data-string="3"] { height: 4px; }
+.string[data-string="4"] { height: 3px; }
+.string[data-string="5"] { height: 2px; }
+.string[data-string="6"] { height: 1.5px; } /* Mi Agudo */
+
+.chord-group {
+    margin: 15px 0;
+}
+.chord-group h4 {
+    margin-bottom: 5px;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}

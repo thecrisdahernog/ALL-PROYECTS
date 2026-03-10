@@ -26,7 +26,7 @@ const notesData = [
     { n: "B", f: [246.94, 493.88, 987.77, 1975.53] }
 ];
 
-const allPianoNotes = {}; // Para el teclado físico
+const allPianoNotes = {}; 
 
 function createPiano() {
     const keyboard = document.getElementById('piano-keyboard');
@@ -54,8 +54,9 @@ function createPiano() {
 }
 
 // ==========================================
-// 3. LÓGICA DE LA GUITARRA (TRASTES Y REALISMO)
+// 3. LÓGICA DE LA GUITARRA (CORREGIDA)
 // ==========================================
+// Afinación Estándar: Mi, La, Re, Sol, Si, Mi
 const guitarBase = [82.41, 110.00, 146.83, 196.00, 246.94, 329.63];
 
 function createGuitarNotes() {
@@ -63,15 +64,16 @@ function createGuitarNotes() {
     if(!guitarGrid) return;
 
     guitarGrid.innerHTML = '';
-    // 6 Cuerdas
+    
+    // 6 Cuerdas (De la 6ta a la 1ra visualmente de arriba a abajo)
     for (let string = 0; string < 6; string++) {
-        // 6 Trastes (0 al 5)
+        // 6 Trastes (El 0 es al aire)
         for (let fret = 0; fret < 6; fret++) {
             const noteBtn = document.createElement('div');
             noteBtn.className = 'fret-note';
             
-            // Frecuencia: base de la cuerda * 2^(traste/12)
-            const freq = guitarBase[5 - string] * Math.pow(2, fret / 12);
+            // Frecuencia real: base de la cuerda * 2^(traste/12)
+            const freq = guitarBase[string] * Math.pow(2, fret / 12);
             
             noteBtn.onclick = () => {
                 playGuitarSound(freq);
@@ -88,7 +90,6 @@ function createGuitarNotes() {
 // 4. MOTORES DE SONIDO
 // ==========================================
 
-// Sonido para el Piano (Suave)
 function playSound(freq, type, decay) {
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
@@ -105,7 +106,6 @@ function playSound(freq, type, decay) {
     osc.stop(now + decay + 0.1);
 }
 
-// Sonido para la Guitarra (Complejo/Realista)
 function playGuitarSound(freq) {
     const oscBody = audioCtx.createOscillator();
     const oscHarmonic = audioCtx.createOscillator();
@@ -139,7 +139,49 @@ function playGuitarSound(freq) {
 }
 
 // ==========================================
-// 5. NAVEGACIÓN Y TECLADO
+// 5. SELECTOR DE ACORDES
+// ==========================================
+const chords = {
+    // --- MAYORES ---
+    'C': { piano: ['C4', 'E4', 'G4'], guitar: [[1, 3], [2, 2], [4, 1]] },
+    'D': { piano: ['D4', 'F#4', 'A4'], guitar: [[2, 0], [3, 2], [4, 3], [5, 2]] },
+    'E': { piano: ['E3', 'G#3', 'B3'], guitar: [[0, 0], [1, 2], [2, 2], [3, 1]] },
+    'F': { piano: ['F3', 'A3', 'C4'], guitar: [[2, 3], [3, 2], [4, 1], [5, 1]] }, // Simplificado para 5 trastes
+    'G': { piano: ['G3', 'B3', 'D4'], guitar: [[0, 3], [1, 2], [5, 3]] },
+    'A': { piano: ['A3', 'C#4', 'E4'], guitar: [[2, 2], [3, 2], [4, 2]] },
+    'B': { piano: ['B3', 'D#4', 'F#4'], guitar: [[1, 2], [2, 4], [3, 4], [4, 4]] },
+
+    // --- MENORES ---
+    'Cm': { piano: ['C4', 'D#4', 'G4'], guitar: [[1, 3], [2, 1], [3, 0], [4, 1]] },
+    'Dm': { piano: ['D4', 'F4', 'A4'], guitar: [[2, 0], [3, 2], [4, 3], [5, 1]] },
+    'Em': { piano: ['E3', 'G3', 'B3'], guitar: [[1, 2], [2, 2]] },
+    'Fm': { piano: ['F3', 'G#3', 'C4'], guitar: [[2, 3], [3, 1], [4, 1], [5, 1]] },
+    'Am': { piano: ['A3', 'C4', 'E4'], guitar: [[2, 2], [3, 2], [4, 1]] },
+    'Bm': { piano: ['B3', 'D4', 'F#4'], guitar: [[1, 2], [2, 4], [3, 4], [4, 3]] }
+};
+
+function showChord(chordName) {
+    clearHighlights();
+    const chord = chords[chordName];
+
+    chord.piano.forEach(note => {
+        const el = document.querySelector(`[data-note="${note}"]`);
+        if (el) el.classList.add('highlight');
+    });
+
+    const allFretNotes = document.querySelectorAll('.fret-note');
+    chord.guitar.forEach(pos => {
+        const index = (pos[0] * 6) + pos[1];
+        if (allFretNotes[index]) allFretNotes[index].classList.add('highlight');
+    });
+}
+
+function clearHighlights() {
+    document.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
+}
+
+// ==========================================
+// 6. NAVEGACIÓN Y TECLADO
 // ==========================================
 
 function showInstrument(type) {
@@ -150,22 +192,6 @@ function showInstrument(type) {
     document.getElementById('btn-guitarra').classList.toggle('active', type === 'guitarra');
 }
 
-// Teclado físico para la octava C4
-const keyMap = { 'a': 'C4', 'w': 'C#4', 's': 'D4', 'e': 'D#4', 'd': 'E4', 'f': 'F4', 't': 'F#4', 'g': 'G4', 'y': 'G#4', 'h': 'A4', 'u': 'A#4', 'j': 'B4' };
-
-window.addEventListener('keydown', (e) => {
-    const noteName = keyMap[e.key.toLowerCase()];
-    if (allPianoNotes[noteName]) {
-        playSound(allPianoNotes[noteName], 'triangle', 1);
-        const el = document.querySelector(`[data-note="${noteName}"]`);
-        if (el) {
-            el.classList.add('playing-css');
-            setTimeout(() => el.classList.remove('playing-css'), 150);
-        }
-    }
-});
-
-// Inicialización general
 window.onload = () => {
     createPiano();
     createGuitarNotes();
