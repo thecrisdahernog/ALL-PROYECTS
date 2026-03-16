@@ -196,3 +196,88 @@ window.onload = () => {
     createPiano();
     createGuitarNotes();
 };
+
+// --- DICCIONARIO MAESTRO DE ACORDES (BIBLIOTECA) ---
+const globalChords = {
+    // MAYORES
+    "C": { type: "maj", p: ["C4", "E4", "G4"], g: [[1, 3], [2, 2], [4, 1]], f: [261.6, 329.6, 392.0] },
+    "D": { type: "maj", p: ["D4", "F#4", "A4"], g: [[2, 0], [3, 2], [4, 3], [5, 2]], f: [293.6, 370.0, 440.0] },
+    "E": { type: "maj", p: ["E3", "G#3", "B3"], g: [[0, 0], [1, 2], [2, 2], [3, 1]], f: [164.8, 207.6, 246.9] },
+    "F": { type: "maj", p: ["F3", "A3", "C4"], g: [[2, 3], [3, 2], [4, 1], [5, 1]], f: [174.6, 220.0, 261.6] },
+    "G": { type: "maj", p: ["G3", "B3", "D4"], g: [[0, 3], [1, 2], [5, 3]], f: [196.0, 246.9, 293.6] },
+    "A": { type: "maj", p: ["A3", "C#4", "E4"], g: [[2, 2], [3, 2], [4, 2]], f: [220.0, 277.2, 329.6] },
+    "B": { type: "maj", p: ["B3", "D#4", "F#4"], g: [[1, 2], [2, 4], [3, 4], [4, 4]], f: [246.9, 311.1, 370.0] },
+    // MENORES
+    "Cm": { type: "min", p: ["C4", "D#4", "G4"], g: [[1, 3], [2, 1], [4, 1]], f: [261.6, 311.1, 392.0] },
+    "Dm": { type: "min", p: ["D4", "F4", "A4"], g: [[2, 0], [3, 2], [4, 3], [5, 1]], f: [293.6, 349.2, 440.0] },
+    "Em": { type: "min", p: ["E3", "G3", "B3"], g: [[1, 2], [2, 2]], f: [164.8, 196.0, 246.9] },
+    "Am": { type: "min", p: ["A3", "C4", "E4"], g: [[2, 2], [3, 2], [4, 1]], f: [220.0, 261.6, 329.6] },
+    "Bm": { type: "min", p: ["B3", "D4", "F#4"], g: [[1, 2], [2, 4], [3, 4], [4, 3]], f: [246.9, 293.6, 370.0] },
+    // SOSTENIDOS / BEMOLES
+    "C#": { type: "acc", p: ["C#4", "F4", "G#4"], g: [[1, 4], [2, 3], [3, 1]], f: [277.2, 349.2, 415.3] },
+    "Eb": { type: "acc", p: ["D#4", "G4", "A#4"], g: [[1, 1], [2, 1], [3, 3], [4, 4]], f: [311.1, 392.0, 466.1] },
+    "F#": { type: "acc", p: ["F#3", "A#3", "C#4"], g: [[0, 2], [1, 4], [2, 4], [3, 3]], f: [185.0, 233.1, 277.2] },
+    "Ab": { type: "acc", p: ["G#3", "C4", "D#4"], g: [[0, 4], [1, 6], [2, 6], [3, 5]], f: [207.6, 261.6, 311.1] },
+    "Bb": { type: "acc", p: ["A#3", "D4", "F4"], g: [[1, 1], [2, 3], [3, 3], [4, 3]], f: [233.1, 293.6, 349.2] }
+};
+
+function initLibrary() {
+    const lists = { maj: document.getElementById('list-maj'), min: document.getElementById('list-min'), acc: document.getElementById('list-acc') };
+    
+    Object.keys(globalChords).forEach(key => {
+        const btn = document.createElement('button');
+        btn.innerText = key;
+        btn.onclick = () => selectLibraryChord(key);
+        if(lists[globalChords[key].type]) lists[globalChords[key].type].appendChild(btn);
+    });
+}
+
+function selectLibraryChord(key) {
+    const chord = globalChords[key];
+    document.getElementById('view-chord-title').innerText = "Acorde: " + key;
+    
+    // Sonido real del acorde (las 3 notas al tiempo)
+    chord.f.forEach(freq => playSound(freq, 'triangle', 2));
+    
+    // Feedback visual en instrumentos
+    // Usamos la función showChord que ya teníamos para iluminar piano y guitarra
+    showChordFromLibrary(key);
+
+    // Actualizar "Placeholders" (Simulación de fotos)
+    document.getElementById('guitar-placeholder').innerText = `Diagrama: Cuerdas ${chord.g.map(pos => pos[0]+1).join(', ')} en trastes ${chord.g.map(pos => pos[1]).join(', ')}`;
+    document.getElementById('piano-placeholder').innerText = `Notas: ${chord.p.join(' + ')}`;
+}
+
+// Función puente para iluminar
+function showChordFromLibrary(name) {
+    clearHighlights();
+    const chord = globalChords[name];
+    chord.p.forEach(note => {
+        const el = document.querySelector(`[data-note="${note}"]`);
+        if (el) el.classList.add('highlight');
+    });
+    const allFretNotes = document.querySelectorAll('.fret-note');
+    chord.g.forEach(pos => {
+        const index = (pos[0] * 6) + pos[1];
+        if (allFretNotes[index]) allFretNotes[index].classList.add('highlight');
+    });
+}
+
+// No olvides llamar a initLibrary() en window.onload
+
+// Modificar showInstrument para que incluya la biblioteca
+function showInstrument(type) {
+    document.getElementById('piano-section').style.display = type === 'piano' ? 'block' : 'none';
+    document.getElementById('guitarra-section').style.display = type === 'guitarra' ? 'block' : 'none';
+    document.getElementById('biblioteca-section').style.display = type === 'biblioteca' ? 'block' : 'none';
+    
+    // Actualizar estados de botones
+    document.querySelectorAll('.instrument-selector button').forEach(b => b.classList.remove('active'));
+    document.getElementById('btn-' + type).classList.add('active');
+}
+
+window.onload = () => {
+    createPiano();
+    createGuitarNotes();
+    initLibrary(); // Nueva función
+};

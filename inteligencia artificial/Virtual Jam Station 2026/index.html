@@ -82,6 +82,57 @@
 </section>
     </main>
 
+<nav class="instrument-selector">
+    <button id="btn-piano" onclick="showInstrument('piano')">🎹 Piano</button>
+    <button id="btn-guitarra" onclick="showInstrument('guitarra')">🎸 Guitarra</button>
+    <button id="btn-biblioteca" onclick="showInstrument('biblioteca')">📚 Biblioteca</button>
+</nav>
+
+<section id="biblioteca-section" class="instrument" style="display:none;">
+    <div class="library-container">
+        <h2 style="color: var(--accent-color);">📚 Enciclopedia Universal de Acordes</h2>
+        <div class="library-layout">
+            <aside class="chord-sidebar">
+                <div class="chord-category">
+                    <h4>Mayores Naturales</h4>
+                    <div id="list-maj" class="chord-grid-small"></div>
+                </div>
+                <div class="chord-category">
+                    <h4>Menores</h4>
+                    <div id="list-min" class="chord-grid-small"></div>
+                </div>
+                <div class="chord-category">
+                    <h4>Sostenidos / Bemoles</h4>
+                    <div id="list-acc" class="chord-grid-small"></div>
+                </div>
+            </aside>
+            
+            <article class="chord-display-panel">
+                <div id="chord-viewer-content">
+                    <h2 id="view-chord-title">Selecciona un acorde para estudiar</h2>
+                    <div class="visual-guides">
+                        <div class="guide-card">
+                            <h5>Posición en Guitarra</h5>
+                            <div id="guitar-placeholder" class="img-placeholder">
+                                
+
+[Image of guitar chord diagram for beginners]
+
+                            </div>
+                        </div>
+                        <div class="guide-card">
+                            <h5>Posición en Piano</h5>
+                            <div id="piano-placeholder" class="img-placeholder">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <p class="chord-description">Al seleccionar, escucharás el sonido real y se marcarán las notas en los instrumentos de las otras pestañas.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
     <script src="script.js"></script>
 </body>
 </html>

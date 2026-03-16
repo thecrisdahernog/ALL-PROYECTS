@@ -66,10 +66,15 @@ gap: 1rem;
     width: 95%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 55% 45%;
-    grid-template-rows: 50% 50%;
-    gap: 10px;
+    grid-template-columns: 50% 50%;
+    border-radius: 1rem;
     background-color: white;
+}
+
+.banner-image{
+    background-image: url(imagenes/ahorros.jpg);
+    background-size: cover;
+    border-radius: 0 10px 10px;
 }
 
 .imagen-ppal{
@@ -137,3 +142,19 @@ gap: 1rem;
     background-color: white;
     color: #070E46;
 }
+
+.banner-info{
+    background-image: linear-gradient(to bottom, #85C8F5,#070E46);
+    border-radius: 10px 0 0 10px;
+    padding: 4.2rem 1rem 1rem 3rem;
+}
+
+.open-sans-drakblue{
+    color: #070E46;
+    font-weight: 700;
+}
+
+.banner-button{
+    font-size: 1rem 2rem;
+}
+
