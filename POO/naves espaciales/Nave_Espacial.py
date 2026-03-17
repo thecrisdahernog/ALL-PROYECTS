@@ -39,4 +39,4 @@ class Nave_espacial:
         
         
     def mostrar_estado(self):
-        print(f"nombre : {self.nombre}\nvida : {self.vida}\nAtaque: {self.ataque}")
+        print(f"nombre : {self.nombre}\nvida : {self.vida}\nAtaques: {self.ataque}")
