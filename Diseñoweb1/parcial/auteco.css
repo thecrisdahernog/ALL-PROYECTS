@@ -1,0 +1,156 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.test{
+    border: solid red 1px;
+}
+
+.menu{
+    height: 80px;
+    width: 100%;
+    background-color: #0D3B70;
+    color: #FFF;
+    margin: 10px auto;
+    display:flex;
+}
+
+.logo{
+    width: 10%;
+    height: 80%;
+    display: flex;
+    object-fit: cover;    
+    color: #FFF;
+}
+
+.navegacion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
+
+.item-menu{
+    width: 20%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner{
+    height: 420px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.banner-image{
+    background-image: url(img/motocicletas-banner.jpg);
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-grid{
+    display: grid;
+    height: 60vh;
+    width: 99vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    margin: 1rem auto;
+}
+
+.primero{
+    background-image: url(img/deportivas.png);
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#FFF;
+}
+
+.segundo{
+    background-image: url(img/automaticas.png);
+    grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-size: 100%;
+    background-clip: content-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#FFF;
+}
+
+.tercero{
+    background-image: url(img/semiautomatica.png);
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end:5;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#FFF;
+}
+
+.cuarto{
+    background-image: url(img/trabajo.png);
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end:5;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#FFF;
+}
+
+.quinto{
+    background-image: url(img/motocarros.png);
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 3;
+    grid-row-end:5;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#FFF;
+}
+
+.main-tittle{
+    
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+    width: 95%;
+    color: #FFF;
+}
+
+.cartas{
+    height: 300px;
+    width: 100%;
+    margin: 1rem auto;
+    display: flex;
+    gap: 1rem;
+    background-color: black;
+}
