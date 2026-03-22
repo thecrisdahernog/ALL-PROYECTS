@@ -1,0 +1,40 @@
+.test{
+    border: solid red 1px;
+}
+
+.banner{
+    height: 650px;
+    width: 100%;
+    color:white;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    border-radius: 1rem;
+    background-color: #47bde1;
+}
+
+.titulo-image{
+    background-image: url(Eco\ Samario.png);
+    background-size: contain;
+    background-position: 30% center;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    padding: 2px;
+}
+
+
+.banner-loguin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input{
+    width: 80%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    gap: 1rem;
+}
